@@ -42,7 +42,7 @@ def get_store_status(now=None):  # added `now=None` so a datetime can be injecte
 
 
 def test_store_open():
-    assert get_store_status(now=datetime(2025, 1, 1, 12, 0, 0)) == "Store is open"  # injected noon
+    assert get_store_status(now=datetime(2025, 1, 1, 12, 0, 0)) == "Store is open"    # injected noon
 
 def test_store_closed():
     assert get_store_status(now=datetime(2025, 1, 1, 23, 0, 0)) == "Store is closed"  # injected 11 PM
@@ -65,7 +65,7 @@ def assign_study_group(random_source=None):  # added `random_source=None` so ran
     return random_source.choice(["Group A", "Group B", "Group C"])
 
 def test_assign_study_group():
-    class FakeRandom:                              # fake random that always returns the first option
+    class FakeRandom:                                                   # fake random that always returns the first option
         def choice(self, options):
             return options[0]
     assert assign_study_group(random_source=FakeRandom()) == "Group A"  # inject fake, assert exact value
@@ -82,7 +82,7 @@ def test_assign_study_group():
 # Then write test_api_url_production() and
 # test_api_url_staging() below.
 
-def get_api_url(env=None):      # added env=None so the environment can be injected
+def get_api_url(env=None):       # added env=None so the environment can be injected
     if env is None:              # if nothing is injected, read the real environment variable
         env = os.getenv("APP_ENV")
     if env == "production":
@@ -91,7 +91,7 @@ def get_api_url(env=None):      # added env=None so the environment can be injec
         return "https://staging.example.com"
 
 def test_api_url_production():
-    assert get_api_url(env="production") == "https://api.example.com"  # injected "production" directly
+    assert get_api_url(env="production") == "https://api.example.com"   # injected "production" directly
 
 def test_api_url_staging():
     assert get_api_url(env="staging") == "https://staging.example.com"  # injected "staging" directly
