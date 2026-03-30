@@ -31,7 +31,7 @@ from datetime import datetime
 # Fix: add a parameter so the time can be injected.
 # Then write test_store_open() and test_store_closed() below.
 
-def get_store_status(now=None):  # added `now=None` so a datetime can be injected
+def get_store_status(now=None):   # added `now=None` so a datetime can be injected
     if now is None:               # if nothing is injected, use the real clock
         now = datetime.now()
     hour = now.hour
